@@ -1,0 +1,25 @@
+<form [formGroup]="cardForm">
+  <input formControlName="name" />
+  <div *ngIf="cardForm.controls.name.errors?.['required']">
+    Value is required
+  </div>
+  <div *ngIf="cardForm.controls.name.errors?.['minlength']">
+    Name is too short<br />
+    Minimum
+    {{cardForm.controls.name.errors?.['minlength']['requiredLength']}}
+    characters required, but your unput is only
+    {{cardForm.controls.name.errors?.['minlength']['actualLength']}}
+  </div>
+</form>
+
+<!-- For debugging: -->
+<div>
+  From Contents:<br />
+  {{ cardForm.value | json }}
+</div>
+<div>Form is valid: {{ cardForm.valid }}</div>
+<div>
+  Errors of name field:<br />
+
+  {{ cardForm.controls.name.errors | json }}
+</div>

@@ -11,7 +11,10 @@ export class CardFormComponent implements OnInit {
     name: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
-  constructor() {}
+  constructor() {
+    //console.log(this.cardForm.controls.name);
+    console.log(this.cardForm.get('name'));
+  }
 
   ngOnInit(): void {}
 }

@@ -1,19 +1,32 @@
-<input [formControl]="control" />
-<!-- <ng-container
-  *ngIf="
-    cardForm.controls.name.touched &&
-    cardForm.controls.name.dirty &&
-    cardForm.controls.name.errors
-  "
->
-  <div *ngIf="cardForm.controls.name.errors?.['required']">
-    Value is required
+<div class="field">
+  <label for="" class="label">{{ label }}</label>
+
+  <div class="control">
+    <input
+      [formControl]="control"
+      class="input"
+      [ngClass]="{ 'is-danger': showErrors() }"
+    />
   </div>
-  <div *ngIf="cardForm.controls.name.errors?.['minlength']">
-    Name is too short<br />
-    Minimum
-    {{ cardForm.controls.name.errors["minlength"]["requiredLength"] }}
-    characters required, but your unput is only
-    {{ cardForm.controls.name.errors["minlength"]["actualLength"] }}
-  </div>
-</ng-container> -->
+  <ng-container *ngIf="showErrors()">
+    <div *ngIf="control.errors?.['required']" class="help is-danger">
+      Value is required
+    </div>
+    <div *ngIf="control.errors?.['minlength']" class="help is-danger">
+      Name is too short<br />
+      Minimum
+      {{ control.errors?.["minlength"]["requiredLength"] }}
+      characters required, but your input is only
+      {{ control.errors?.["minlength"]["actualLength"] }}
+    </div>
+    <div *ngIf="control.errors?.['maxlength']" class="help is-danger">
+      The input passed the
+      {{ control.errors?.["maxlength"]["requiredLength"] }} maximum input
+      length.<br />
+      Your current length is {{ control.errors?.["maxlength"]["actualLength"] }}
+    </div>
+    <div *ngIf="control.errors?.['pattern']" class="help is-danger">
+      Your input has pattern error, are you useing the correct format?!
+    </div>
+  </ng-container>
+</div>

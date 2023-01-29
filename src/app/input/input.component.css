@@ -1,0 +1,23 @@
+* {
+  color: #99cccc;
+}
+.validation-error {
+  background-color: #fafa00;
+  color: #ff2020;
+  box-shadow: inset 2px 2px 8px #5a2020;
+  margin: 12px;
+  border: 2px solid #ccc;
+  padding: 8px;
+}
+input {
+  color: #000;
+}
+.help {
+  background-color: #ededcd;
+  padding: 6px;
+  margin: 8px;
+  border-radius: 6px;
+  box-shadow: inset 2px 2px 4px #204040;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+}

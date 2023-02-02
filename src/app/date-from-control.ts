@@ -3,6 +3,9 @@ import { FormControl } from '@angular/forms';
 export class DateFromControl extends FormControl {
   override setValue(value: string, options: any) {
     console.log('v: ' + value);
+    if (value === null) {
+      value = '';
+    }
     //<nn>
     // If the input is not a digit, and not a /, then we send just the old value, and not the new one.
     //</nn>
@@ -25,13 +28,8 @@ export class DateFromControl extends FormControl {
       }
     }
 
-    //<nn>
-    // If the length of the value is 2 (digits) then we add the / element.
-    //</nn>
-    if (value.length == 2) {
-      if (this.value.length !== 3) {
-        value = value + '/';
-      }
+    if (value.includes('//')) {
+      value = this.value.replace('//', '/');
     }
 
     //<nn>
